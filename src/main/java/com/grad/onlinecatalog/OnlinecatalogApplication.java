@@ -1,6 +1,7 @@
 package com.grad.onlinecatalog;
 
 import com.grad.onlinecatalog.model.Student;
+import com.grad.onlinecatalog.repository.PendingUserRepository;
 import com.grad.onlinecatalog.repository.StudentRepository;
 import com.grad.onlinecatalog.repository.UserRepository;
 import com.grad.onlinecatalog.service.SendGridEmailService;
@@ -16,6 +17,9 @@ public class OnlinecatalogApplication implements CommandLineRunner {
 	private StudentRepository studentRepository;
 
 	@Autowired
+	private PendingUserRepository pendingUserRepository;
+
+	@Autowired
 	private UserRepository userRepository;
 
 	@Autowired
@@ -29,7 +33,7 @@ public class OnlinecatalogApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 
 		try {
-			userRepository.deleteById(1);
+			pendingUserRepository.deleteById(2);
 		} catch (Exception ex) {
 
 		}
