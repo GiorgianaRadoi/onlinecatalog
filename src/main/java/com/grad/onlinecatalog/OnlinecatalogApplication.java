@@ -1,6 +1,8 @@
 package com.grad.onlinecatalog;
 
+import com.grad.onlinecatalog.model.Student;
 import com.grad.onlinecatalog.repository.StudentRepository;
+import com.grad.onlinecatalog.repository.UserRepository;
 import com.grad.onlinecatalog.service.SendGridEmailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -8,10 +10,13 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class OnlinecatalogApplication implements CommandLineRunner{
+public class OnlinecatalogApplication implements CommandLineRunner {
 
 	@Autowired
 	private StudentRepository studentRepository;
+
+	@Autowired
+	private UserRepository userRepository;
 
 	@Autowired
 	private SendGridEmailService sendGridEmailService;
@@ -23,7 +28,12 @@ public class OnlinecatalogApplication implements CommandLineRunner{
 	@Override
 	public void run(String... args) throws Exception {
 
-		sendGridEmailService.sendHTML("giorgiana.radoi1@gmail.com", "giorgiana.radoi1@gmail.com", "Hello from the other side!", "Hello!");
+		try {
+			userRepository.deleteById(1);
+		} catch (Exception ex) {
+
+		}
+		//sendGridEmailService.sendHTML("buhaidebalta.15@gmail.com", "buhaidebalta.15@gmail.com", "Hello from the other side!", "Hello!");
 //		Student student = new Student();
 //		student.setFirstName("John");
 //		student.setLastName("Doe");
