@@ -21,9 +21,7 @@ public class SchoolGroupController {
     @GetMapping("allschoolgroups")
     public String showAllGroups(Model model) {
         List<SchoolGroup> schoolGroups = schoolGroupService.findAll();
-
         model.addAttribute("schoolgroups", schoolGroups);
-
         return "/schoolgroup/showallschoolgroups";
      }
 
