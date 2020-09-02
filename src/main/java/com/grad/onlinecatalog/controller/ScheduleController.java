@@ -4,7 +4,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 public class ScheduleController {
     @GetMapping("schedule")
-    public String schedulePage() {
+    public String showSchedule() {
         return "schedule/showschedule";
     }
 }
