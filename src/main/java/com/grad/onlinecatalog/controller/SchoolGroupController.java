@@ -22,7 +22,7 @@ public class SchoolGroupController {
     public String showAllGroups(Model model) {
         List<SchoolGroup> schoolGroups = schoolGroupService.findAll();
         model.addAttribute("schoolgroups", schoolGroups);
-        return "/schoolgroup/showallschoolgroups";
+        return "schoolgroup/showallschoolgroups";
      }
 
     @GetMapping("/addschoolgroup")
@@ -46,4 +46,29 @@ public class SchoolGroupController {
         model.addAttribute("students", schoolGroupService.findStudentsByGroup(id));
         return "schoolgroup/viewstudents";
     }
+
+    @GetMapping("/editschoolgroup/{id}")
+    public String editSchoolGroup(Model model, @PathVariable Integer id) {
+        SchoolGroup schoolGroup = schoolGroupService.findById(id);
+        model.addAttribute("schoolgroup", schoolGroup); // initial bind with the form, to say to the webpage what is the type of student th:object
+        return "schoolgroup/editschoolgroup";
+    }
+
+    @PostMapping("/editschoolgroup/{id}")
+    public String editSchoolGroup(@ModelAttribute SchoolGroup schoolGroup, @PathVariable Integer id) {
+//        SchoolGroup database_schoolgroup = schoolGroupService.findById(id); // ti be able to update that id, get it from database
+//        database_schoolgroup.setGroupName(schoolGroup.getGroupName()); // update fields
+//        database_schoolgroup.setGroupYear(schoolGroup.getGroupYear());
+//        System.out.println(database_schoolgroup);
+        schoolGroupService.save(schoolGroup); // save it again. SAVE acts as UPDATE
+//        return "redirect:/editstudent/"+id;
+        return "redirect:/allschoolgroups";
+    }
+
+    @GetMapping("/deleteschoolgroup/{id}")
+    public String deleteSchoolGroup(@PathVariable Integer id) {
+        schoolGroupService.deleteById(id);
+        return "redirect:/allschoolgroups"; // forward
+    }
+
 }

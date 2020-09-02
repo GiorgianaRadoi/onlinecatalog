@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service("ISchoolGroupService")
 public class SchoolGroupService {
@@ -27,4 +28,17 @@ public class SchoolGroupService {
         //TODO: try catch / check if present
         return schoolGroupRepository.findById(id).get().getStudents();
     }
+
+    public SchoolGroup findById(Integer id) {
+        Optional<SchoolGroup> schoolGroup = schoolGroupRepository.findById(id);
+        if (schoolGroup.isPresent()) {
+            return schoolGroup.get();
+        }
+        return null;
+    }
+
+    public void deleteById(Integer id) {
+        schoolGroupRepository.deleteById(id);
+    }
+
 }
