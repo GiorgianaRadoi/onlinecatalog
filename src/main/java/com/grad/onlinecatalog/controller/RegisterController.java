@@ -55,10 +55,10 @@ public class RegisterController {
         PendingUser pendingUser = new PendingUser();
         String activationCode = randomStringGenerator.getAlphaNumericString(20);
         pendingUser.setActivationCode(activationCode);
-        sendGridEmailService.sendHTML("buhaidebalta.15@gmail.com",
+        sendGridEmailService.sendHTML("testmail.java20@gmail.com",
                 user.getEmailAddress(), "Please confirm account",
                 randomStringGenerator.linkCreator(activationCode,
-                        "https://online-school-catalog-rs.herokuapp.com"));
+                        "https://online-school-catalog-rg.herokuapp.com"));
         pendingUser.setUser(user);
         pendingUserRepository.save(pendingUser);
 
