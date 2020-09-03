@@ -33,7 +33,7 @@ public class Student {
             inverseJoinColumns = @JoinColumn(name = "discipline_id"))
     private List<Discipline> disciplines;
 
-    @ManyToMany
+    @OneToMany
     @JoinTable(name = "student_atendances", joinColumns = @JoinColumn(name = "student_id"),
             inverseJoinColumns = @JoinColumn(name = "attendance_id"))
     private List<Grade> attendances;

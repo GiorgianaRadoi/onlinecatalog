@@ -19,8 +19,8 @@ public class Attendance {
 
     private String attendance;
 
-    @ManyToMany(mappedBy = "attendances")
-    private List<Student> students;
+    @ManyToOne
+    private  Student student;
 
     private Date attendanceDate;
 }
