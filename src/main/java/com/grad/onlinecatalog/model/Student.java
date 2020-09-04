@@ -20,13 +20,14 @@ public class Student {
     private String firstName;
     private String lastName;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    private SchoolGroup schoolGroup;
 
-//    @ManyToMany
+    //    @ManyToMany
 //    @JoinTable(name = "student_grades", joinColumns = @JoinColumn(name = "student_id"),
 //            inverseJoinColumns = @JoinColumn(name = "grade_id"))
 //    private List<Grade> grades;
+    @ManyToOne
+    @JoinColumn(name = "group_id")
+    private SchoolGroup schoolGroup;
 
     @ManyToMany
     @JoinTable(name = "student_discipline", joinColumns = @JoinColumn(name = "student_id"),

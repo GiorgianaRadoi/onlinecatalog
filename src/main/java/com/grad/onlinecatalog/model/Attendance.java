@@ -18,9 +18,10 @@ public class Attendance {
     private int attendanceId;
 
     private String attendance;
-    private Date attendanceDate;
+//    private Date attendanceDate;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
+    @JoinColumn(name = "student_id")
     private  Student student;
 
 }

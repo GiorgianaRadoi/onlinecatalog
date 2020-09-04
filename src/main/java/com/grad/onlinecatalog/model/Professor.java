@@ -26,7 +26,8 @@ public class Professor {
     @ManyToMany(fetch = FetchType.LAZY)
     private List<SchoolGroup> schoolGroups;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
+    @JoinColumn(name = "discipline_id")
     private Discipline discipline;
 
     @ManyToMany(fetch = FetchType.LAZY)

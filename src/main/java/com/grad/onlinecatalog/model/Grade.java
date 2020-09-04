@@ -22,7 +22,10 @@ public class Grade {
 
     //    @ManyToMany(mappedBy = "grades")
 //    private List<Student> students;
-    @ManyToOne(fetch = FetchType.LAZY)
-    private String sttudent;
+    @ManyToOne
+    @JoinColumn(name = "student_id")
+    private Student student;
+
+
 
 }
