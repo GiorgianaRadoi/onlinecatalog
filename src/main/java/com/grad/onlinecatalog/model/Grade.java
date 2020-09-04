@@ -18,9 +18,11 @@ public class Grade {
     private int gradeId;
 
     private double grade;
-
-    @ManyToMany(mappedBy = "grades")
-    private List<Student> students;
-
     private Date gradeDate;
+
+    //    @ManyToMany(mappedBy = "grades")
+//    private List<Student> students;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private String sttudent;
+
 }

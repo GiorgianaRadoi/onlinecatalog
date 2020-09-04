@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -19,7 +20,17 @@ public class Professor {
     private String firstName;
     private String lastName;
 
+    @ManyToMany(fetch = FetchType.LAZY)
+    private List<SchoolUnit> schoolUnits;
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    private List<SchoolGroup> schoolGroups;
+
     @ManyToOne(fetch = FetchType.LAZY)
     private Discipline discipline;
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    private List<Discipline> disciplines;
+
 
 }

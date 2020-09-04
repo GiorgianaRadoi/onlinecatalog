@@ -27,5 +27,5 @@ public class SchoolUnit {
             mappedBy = "school_unit",
             cascade = CascadeType.ALL
     )
-    private List<SchoolGroup> schoolGroupsgit;
+    private List<SchoolGroup> schoolGroups;
 }

@@ -23,10 +23,10 @@ public class Student {
     @ManyToOne(fetch = FetchType.LAZY)
     private SchoolGroup schoolGroup;
 
-    @ManyToMany
-    @JoinTable(name = "student_grades", joinColumns = @JoinColumn(name = "student_id"),
-            inverseJoinColumns = @JoinColumn(name = "grade_id"))
-    private List<Grade> grades;
+//    @ManyToMany
+//    @JoinTable(name = "student_grades", joinColumns = @JoinColumn(name = "student_id"),
+//            inverseJoinColumns = @JoinColumn(name = "grade_id"))
+//    private List<Grade> grades;
 
     @ManyToMany
     @JoinTable(name = "student_discipline", joinColumns = @JoinColumn(name = "student_id"),
@@ -38,5 +38,11 @@ public class Student {
             cascade = CascadeType.ALL
     )
     private List<Attendance> attendances;
+
+    @OneToMany(
+            mappedBy = "student",
+            cascade = CascadeType.ALL
+    )
+    private List<Grade> grades;
 
 }
