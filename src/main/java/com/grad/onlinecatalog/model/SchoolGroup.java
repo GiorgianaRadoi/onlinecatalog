@@ -20,8 +20,7 @@ public class SchoolGroup {
     private String groupName;
     private Date groupYear;
 
-    @ManyToOne
-    @JoinColumn(name = "unit_id")
+    @ManyToOne(fetch = FetchType.LAZY)
     private SchoolUnit schoolUnit;
 
     @OneToMany(

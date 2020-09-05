@@ -20,8 +20,7 @@ public class Attendance {
     private String attendance;
 //    private Date attendanceDate;
 
-    @ManyToOne
-    @JoinColumn(name = "student_id")
+    @ManyToOne(fetch = FetchType.LAZY)
     private  Student student;
 
 }

@@ -24,7 +24,7 @@ public class SchoolUnit {
     private List<Professor> professors;
 
     @OneToMany(
-            mappedBy = "school_unit",
+            mappedBy = "schoolUnit",
             cascade = CascadeType.ALL
     )
     private List<SchoolGroup> schoolGroups;

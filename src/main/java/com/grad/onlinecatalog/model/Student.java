@@ -25,8 +25,7 @@ public class Student {
 //    @JoinTable(name = "student_grades", joinColumns = @JoinColumn(name = "student_id"),
 //            inverseJoinColumns = @JoinColumn(name = "grade_id"))
 //    private List<Grade> grades;
-    @ManyToOne
-    @JoinColumn(name = "group_id")
+    @ManyToOne(fetch = FetchType.LAZY)
     private SchoolGroup schoolGroup;
 
     @ManyToMany

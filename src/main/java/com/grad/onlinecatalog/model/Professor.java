@@ -15,19 +15,22 @@ public class Professor {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int professorId;
+    private int id;
 
     private String firstName;
     private String lastName;
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(
+            mappedBy = "professors" ,
+            fetch = FetchType.LAZY)
     private List<SchoolUnit> schoolUnits;
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(
+            mappedBy = "professors",
+            fetch = FetchType.LAZY)
     private List<SchoolGroup> schoolGroups;
 
-    @ManyToOne
-    @JoinColumn(name = "discipline_id")
+    @ManyToOne(fetch = FetchType.LAZY)
     private Discipline discipline;
 
     @ManyToMany(fetch = FetchType.LAZY)

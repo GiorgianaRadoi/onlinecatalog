@@ -20,12 +20,11 @@ public class Grade {
     private double grade;
     private Date gradeDate;
 
-    //    @ManyToMany(mappedBy = "grades")
-//    private List<Student> students;
-    @ManyToOne
-    @JoinColumn(name = "student_id")
+
+    @ManyToOne(fetch = FetchType.LAZY)
     private Student student;
 
-
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Discipline discipline;
 
 }
