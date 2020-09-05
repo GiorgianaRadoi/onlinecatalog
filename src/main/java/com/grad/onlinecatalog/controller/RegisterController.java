@@ -58,7 +58,7 @@ public class RegisterController {
         PendingUser pendingUser = new PendingUser();
         String activationCode = randomStringGenerator.getAlphaNumericString(20);
         pendingUser.setActivationCode(activationCode);
-        sendGridEmailService.sendHTML("buhaidebalta.15@gmail.com",
+        sendGridEmailService.sendHTML("testmail.java20@gmail.com",
                 user.getEmailAddress(), "Please confirm account",
                 randomStringGenerator.linkCreator(activationCode,
                         validationUrl));
