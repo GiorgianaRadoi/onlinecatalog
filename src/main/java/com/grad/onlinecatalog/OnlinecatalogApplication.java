@@ -18,30 +18,27 @@ public class OnlinecatalogApplication implements CommandLineRunner {
 	private StudentRepository studentRepository;
 
 	@Autowired
-	private PendingUserRepository pendingUserRepository;
-
-	@Autowired
 	private UserRepository userRepository;
 
 	@Autowired
 	private SendGridEmailService sendGridEmailService;
 
 	public static void main(String[] args) {
-		SpringApplication.run(OnlinecatalogApplication.class, args);
+		SpringApplication.run( OnlinecatalogApplication.class, args );
 	}
 
-
 	@Override
-	public void run (String...args) throws Exception {
+	public void run(String... args) throws Exception {
+
 		try {
 			userRepository.deleteById( 1 );
 		} catch (Exception ex) {
-		}
 
+		}
 	}
 
 
-		//sendGridEmailService.sendHTML("buhaidebalta.15@gmail.com", "buhaidebalta.15@gmail.com", "Hello from the other side!", "Hello!");
+	//sendGridEmailService.sendHTML("buhaidebalta.15@gmail.com", "buhaidebalta.15@gmail.com", "Hello from the other side!", "Hello!");
 //		Student student = new Student();
 //		student.setFirstName("John");
 //		student.setLastName("Doe");
@@ -63,8 +60,6 @@ public class OnlinecatalogApplication implements CommandLineRunner {
 //		for (Student s: studentRepository.findAll()) {
 //			System.out.println(s.getStudentId() + ". " + s.getFirstName() + " " + s.getLastName());
 //		}
-
-	}
 
 
 
