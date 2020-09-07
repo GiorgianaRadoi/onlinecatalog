@@ -15,7 +15,7 @@ import java.util.List;
 @Controller
 public class SchoolGroupController {
 
-    @Autowired
+       @Autowired
     private SchoolGroupService schoolGroupService;
 
     @GetMapping("allschoolgroups")
@@ -23,7 +23,7 @@ public class SchoolGroupController {
         List<SchoolGroup> schoolGroups = schoolGroupService.findAll();
         model.addAttribute("schoolgroups", schoolGroups);
         return "schoolgroup/showallschoolgroups";
-     }
+    }
 
     @GetMapping("/addschoolgroup")
     public String addSchoolGroup(Model model) {
