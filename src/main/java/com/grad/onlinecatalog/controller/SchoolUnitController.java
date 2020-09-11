@@ -39,23 +39,23 @@ public class SchoolUnitController {
         return "redirect:/allschoolunits";
 
     }
-    @GetMapping("/editschoolunit/{id}")
-    public String editSchoolUnit(Model model, @PathVariable Integer id) {
-        SchoolUnit schoolUnit = schoolUnitService.findById(id);
-        model.addAttribute("schoolunit", schoolUnit); // initial bind with the form, to say to the webpage what is the type of student th:object
-        return "schoolgroup/editschoolunit";
-    }
-
-    @PostMapping("/editschoolunit/{id}")
-    public String editSchoolUnit(@ModelAttribute SchoolUnit schoolUnit, @PathVariable Integer id) {
-        schoolUnitService.save(schoolUnit); // save it again. SAVE acts as UPDATE
-        return "redirect:/allschoolunits";
-    }
-
-    @GetMapping("/deleteschoolgroup/{id}")
-    public String deleteSchoolUnit(@PathVariable Integer id) {
-        schoolUnitService.deleteById(id);
-        return "redirect:/allschoolunits"; // forward
-    }
+//    @GetMapping("/editschoolunit/{id}")
+//    public String editSchoolUnit(Model model, @PathVariable Integer id) {
+//        SchoolUnit schoolUnit = schoolUnitService.findById(id);
+//        model.addAttribute("schoolunit", schoolUnit); // initial bind with the form, to say to the webpage what is the type of student th:object
+//        return "schoolgroup/editschoolunit";
+//    }
+//
+//    @PostMapping("/editschoolunit/{id}")
+//    public String editSchoolUnit(@ModelAttribute SchoolUnit schoolUnit, @PathVariable Integer id) {
+//        schoolUnitService.save(schoolUnit); // save it again. SAVE acts as UPDATE
+//        return "redirect:/allschoolunits";
+//    }
+//
+//    @GetMapping("/deleteschoolgroup/{id}")
+//    public String deleteSchoolUnit(@PathVariable Integer id) {
+//        schoolUnitService.deleteById(id);
+//        return "redirect:/allschoolunits"; // forward
+//    }
 
 }
