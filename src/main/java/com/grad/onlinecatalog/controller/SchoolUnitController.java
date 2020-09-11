@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
 
@@ -22,6 +24,20 @@ public class SchoolUnitController {
         List<SchoolUnit> schoolUnits = schoolUnitService.findAll();
         model.addAttribute("schoolunits", schoolUnits);
         return "schoolunit/showallschoolunits";
+    }
+
+    @GetMapping("/addschoolunit")
+    public String addSchoolUnit(Model model) {
+        model.addAttribute("schoolunit", new SchoolUnit()); // initial bind with the form, to say to the webpage
+        return "schoolunit/addschoolunit";
+    }
+
+    @PostMapping("/addschoolunit")
+    public String addSchoolUnit(@ModelAttribute SchoolUnit schoolUnit) {
+//        System.out.println(student);
+        schoolUnitService.save(schoolUnit);
+        return "redirect:/allschoolunits";
+
     }
 
 }
