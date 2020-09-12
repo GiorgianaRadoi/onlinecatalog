@@ -33,7 +33,7 @@ public class SchoolGroupController {
     public String addSchoolGroup(Model model, @PathVariable Integer id) {
         SchoolGroup schoolGroup = new SchoolGroup(  );
         schoolGroup.setSchoolUnit( schoolUnitService.findById( id ) );
-        model.addAttribute("schoolgroup", new SchoolGroup()); // initial bind with the form, to say to the webpage
+        model.addAttribute("schoolgroup", schoolGroup); // initial bind with the form, to say to the webpage
         return "schoolgroup/addschoolgroup";
     }
 
