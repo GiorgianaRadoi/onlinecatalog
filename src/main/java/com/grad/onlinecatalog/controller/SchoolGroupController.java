@@ -37,12 +37,12 @@ public class SchoolGroupController {
         return "schoolgroup/addschoolgroup";
     }
 
-    @PostMapping("/addschoolgroup")
-    public String addSchoolGroup(@ModelAttribute SchoolGroup schoolGroup) {
-//        System.out.println(student);
+    @PostMapping("/{id}/addschoolgroup")
+    public String addSchoolGroup(@ModelAttribute SchoolGroup schoolGroup, @PathVariable Integer id) {
+        schoolGroup.setSchoolUnit( schoolUnitService.findById( id ) );
         schoolGroupService.save(schoolGroup);
         return "redirect:/allschoolgroups";
-        //TODO: show in same page on the left all students, on the right add a new student
+
     }
 
     @GetMapping("/group/{id}/students")
