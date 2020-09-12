@@ -26,9 +26,9 @@
 <body>
 <div>
     <h1 th:text="${schoolunit.unitName}"></h1>
-    <!--    <a th:href="@{/addschoolgroup} th:object="${schoolgroup}"  method="post"" class="btn-floating pulse">-->
-    <!--        <i class="material-icons">add</i>-->
-    <!--    </a>-->
+        <a th:action="@{/addschoolgroup}" th:object="${schoolgroup}" method="post"  class="btn-floating pulse">
+        <i class="material-icons">add</i>
+    </a>
 </div>
 <th:block th:each="s: ${schoolgroups}">
 
