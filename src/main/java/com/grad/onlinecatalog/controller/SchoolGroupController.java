@@ -2,6 +2,7 @@ package com.grad.onlinecatalog.controller;
 
 import com.grad.onlinecatalog.model.SchoolGroup;
 import com.grad.onlinecatalog.service.SchoolGroupService;
+import com.grad.onlinecatalog.service.SchoolUnitService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,6 +19,9 @@ public class SchoolGroupController {
        @Autowired
     private SchoolGroupService schoolGroupService;
 
+       @Autowired
+       private SchoolUnitService schoolUnitService;
+
     @GetMapping("allschoolgroups")
     public String showAllGroups(Model model) {
         List<SchoolGroup> schoolGroups = schoolGroupService.findAll();
@@ -25,11 +29,11 @@ public class SchoolGroupController {
         return "schoolgroup/showallschoolgroups";
     }
 
-    @GetMapping("/addschoolgroup")
-    public String addSchoolGroup(Model model) {
+    @GetMapping("/{id}/addschoolgroup")
+    public String addSchoolGroup(Model model, @PathVariable Integer id) {
+        SchoolGroup schoolGroup = new SchoolGroup(  );
+        schoolGroup.setSchoolUnit( schoolUnitService.findById( id ) );
         model.addAttribute("schoolgroup", new SchoolGroup()); // initial bind with the form, to say to the webpage
-        // what is the type of student th:object
-
         return "schoolgroup/addschoolgroup";
     }
 
