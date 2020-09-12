@@ -47,7 +47,12 @@
 
         <tr th:each="s : ${schoolunits}">
             <td th:text="${s.unitId}"></td>
-            <td th:text="${s.unitName}"></td>
+            <td>
+                <a
+                        th:text="${s.unitName}" th:href="@{/schoolunit/{id}}(id = ${s.unitId})">
+
+                </a>
+            </td>
 
             <td>
                 <a th:href="@{/editschoolunit/{id}(id = ${s.unitId})}">
