@@ -41,4 +41,6 @@ public class SchoolGroupService {
         schoolGroupRepository.deleteById(id);
     }
 
+    public List<SchoolGroup> findByUnitId(Integer unitId){return schoolGroupRepository.findAllByUnitID( unitId );}
+
 }

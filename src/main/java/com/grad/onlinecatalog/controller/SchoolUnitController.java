@@ -3,6 +3,7 @@ package com.grad.onlinecatalog.controller;
 import com.grad.onlinecatalog.model.SchoolGroup;
 import com.grad.onlinecatalog.model.SchoolUnit;
 import com.grad.onlinecatalog.repository.SchoolUnitRepository;
+import com.grad.onlinecatalog.service.SchoolGroupService;
 import com.grad.onlinecatalog.service.SchoolUnitService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.Comparator;
 import java.util.List;
 
 @Controller
@@ -19,6 +21,9 @@ public class SchoolUnitController {
 
     @Autowired
     private SchoolUnitService schoolUnitService;
+
+    @Autowired
+    private SchoolGroupService schoolGroupService;
 
     @GetMapping("allschoolunits")
     public String showAllGroups(Model model) {
@@ -39,6 +44,17 @@ public class SchoolUnitController {
         return "redirect:/allschoolunits";
 
     }
+
+    @GetMapping("/viewschoolunit/{id}")
+    public String showSchoolUnit(Model model, @PathVariable Integer id) {
+        SchoolUnit schoolUnit = schoolUnitService.findById(id);
+        model.addAttribute("schoolunit", schoolUnit);
+        model.addAttribute( "schoolgroups",
+            schoolGroupService.findByUnitId( id ));
+        return "schoolunit/viewschoolunit";
+    }
+
+
 //    @GetMapping("/editschoolunit/{id}")
 //    public String editSchoolUnit(Model model, @PathVariable Integer id) {
 //        SchoolUnit schoolUnit = schoolUnitService.findById(id);
