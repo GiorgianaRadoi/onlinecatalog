@@ -70,18 +70,16 @@ public class StudentController {
     @GetMapping("/editstudent/{id}")
     public String editStudent(Model model, @PathVariable Integer id) {
         Student student = studentService.findById(id);
-
         model.addAttribute("student", student); // initial bind with the form, to say to the webpage
-        model.addAttribute("schoolgroups", schoolGroupService.findAll());
+        model.addAttribute("schoolgroups", schoolGroupService.findByUnitId( id ));
         // what is the type of student th:object
-
         return "student/editstudent";
     }
 
     @PostMapping("/editstudent/{id}")
     public String editStudent(@ModelAttribute Student student, @PathVariable Integer id) {
         System.out.println(student);
-
+        student.setSchoolGroup( schoolGroupService.findById( id ) );
         studentService.save(student); // save it again. SAVE acts as UPDATE
 //        return "redirect:/editstudent/"+id;
 //        return "redirect:/allstudents";

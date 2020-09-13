@@ -38,7 +38,6 @@ public class SchoolGroupController {
         SchoolGroup schoolGroup = new SchoolGroup();
         schoolGroup.setSchoolUnit( schoolUnitService.findById( id ) );
         model.addAttribute( "schoolgroup", schoolGroup ); // initial bind with the form, to say to the webpage
-
         return "schoolgroup/addschoolgroup";
     }
 
@@ -47,7 +46,6 @@ public class SchoolGroupController {
         schoolGroup.setSchoolUnit( schoolUnitService.findById( id ) );
         schoolGroupService.save( schoolGroup );
         return "redirect:/viewschoolunit/" + id;
-
     }
 
     @GetMapping("/group/{id}/students")
