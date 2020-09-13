@@ -55,7 +55,7 @@ public class SchoolGroupController {
         model.addAttribute( "schoolgroup",
                 schoolGroupService.findById( id ));
         model.addAttribute( "student",
-                schoolGroupService.findStudentsByGroup( id ));
+               studentService.findByUnitId( id ));
         return "schoolgroup/viewstudents";
     }
 
