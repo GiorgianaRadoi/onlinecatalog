@@ -1,5 +1,6 @@
 package com.grad.onlinecatalog.service;
 
+import com.grad.onlinecatalog.model.SchoolGroup;
 import com.grad.onlinecatalog.model.Student;
 import com.grad.onlinecatalog.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,4 +35,6 @@ public class StudentService {
     public void deleteById(Integer id) {
        studentRepository.deleteById(id);
     }
+
+    public List<Student> findByUnitId(Integer groupId){return studentRepository.findAllByGroupId( groupId );}
 }
