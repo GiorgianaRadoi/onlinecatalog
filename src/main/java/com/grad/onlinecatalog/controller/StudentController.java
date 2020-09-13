@@ -52,6 +52,8 @@ public class StudentController {
     @GetMapping("/{id}/addstudent")//ruta care trebuie sa se regasesca in html
     public String addStudent(Model model, @PathVariable Integer id) {
         Student student = new Student();
+        model.addAttribute( "schoolgroup",
+                schoolGroupService.findById( id ));
         student.setSchoolGroup( schoolGroupService.findById( id ) );
         model.addAttribute( "student", student );
         return "student/addstudent";
