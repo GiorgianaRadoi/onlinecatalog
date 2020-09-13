@@ -55,8 +55,6 @@ public class SchoolUnitController {
         model.addAttribute( "schoolunit", schoolUnit );
         model.addAttribute( "schoolgroups",
                 schoolGroupService.findByUnitId( id ) );
-        model.addAttribute( "student",
-                studentService.findByUnitId( id ) );
         return "schoolunit/viewschoolunit";
     }
 
