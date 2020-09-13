@@ -41,7 +41,7 @@ public class SchoolGroupController {
     public String addSchoolGroup(@ModelAttribute SchoolGroup schoolGroup, @PathVariable Integer id) {
         schoolGroup.setSchoolUnit( schoolUnitService.findById( id ) );
         schoolGroupService.save(schoolGroup);
-        return "redirect: schoolunit/viewschoolunit";
+        return "redirect: /viewschoolunit/"+id;
 
     }
 
