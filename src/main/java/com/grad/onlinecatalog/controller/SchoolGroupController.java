@@ -54,7 +54,7 @@ public class SchoolGroupController {
     public String viewStudentsInGroup(Model model, @PathVariable Integer id) {
         model.addAttribute( "schoolgroup",
                 schoolGroupService.findById( id ));
-        model.addAttribute( "student",
+        model.addAttribute( "students",//cum se regaseste in html atribut
                studentService.findByUnitId( id ));
         return "schoolgroup/viewstudents";
     }
