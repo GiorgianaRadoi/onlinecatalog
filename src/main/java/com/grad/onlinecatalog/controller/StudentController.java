@@ -84,14 +84,15 @@ public class StudentController {
 
         studentService.save(student); // save it again. SAVE acts as UPDATE
 //        return "redirect:/editstudent/"+id;
-        return "redirect:/allstudents";
+//        return "redirect:/allstudents";
+        return "redirect:/group/"+id+"/students";
         //TODO: show in same page on the left all students, on the right add a new student
     }
 
     @GetMapping("/deletestudent/{id}")
     public String deleteStudent(@PathVariable Integer id) {
         studentService.deleteById(id);
-
-        return "redirect:/allstudents"; // forward
+        return "redirect:/group/"+id+"/students";
+//        return "redirect:/allstudents"; // forward
     }
 }
