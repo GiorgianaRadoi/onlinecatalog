@@ -63,7 +63,7 @@ public class StudentController {
     public String addStudent(@ModelAttribute Student student, @PathVariable Integer id) {
         student.setSchoolGroup( schoolGroupService.findById( id ) );
         studentService.save( student);
-        return "redirect:/group/"+id+"/viewstudents";
+        return "redirect:/group/"+id+"/students";
 
     }
 
