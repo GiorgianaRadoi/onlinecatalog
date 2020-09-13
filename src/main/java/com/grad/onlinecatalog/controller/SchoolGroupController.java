@@ -16,45 +16,45 @@ import java.util.List;
 @Controller
 public class SchoolGroupController {
 
-       @Autowired
+    @Autowired
     private SchoolGroupService schoolGroupService;
 
-       @Autowired
-       private SchoolUnitService schoolUnitService;
+    @Autowired
+    private SchoolUnitService schoolUnitService;
 
     @GetMapping("allschoolgroups")
     public String showAllGroups(Model model) {
         List<SchoolGroup> schoolGroups = schoolGroupService.findAll();
-        model.addAttribute("schoolgroups", schoolGroups);
+        model.addAttribute( "schoolgroups", schoolGroups );
         return "schoolgroup/showallschoolgroups";
     }
 
     @GetMapping("/{id}/addschoolgroup")
     public String addSchoolGroup(Model model, @PathVariable Integer id) {
-        SchoolGroup schoolGroup = new SchoolGroup(  );
+        SchoolGroup schoolGroup = new SchoolGroup();
         schoolGroup.setSchoolUnit( schoolUnitService.findById( id ) );
-        model.addAttribute("schoolgroup", schoolGroup); // initial bind with the form, to say to the webpage
+        model.addAttribute( "schoolgroup", schoolGroup ); // initial bind with the form, to say to the webpage
         return "schoolgroup/addschoolgroup";
     }
 
-           @PostMapping("/{id}/addschoolgroup")
-        public String addSchoolGroup(@ModelAttribute SchoolGroup schoolGroup, @PathVariable Integer id) {
-            schoolGroup.setSchoolUnit( schoolUnitService.findById( id ) );
-            schoolGroupService.save(schoolGroup);
-            return "redirect:/viewschoolunit/"+id;
+    @PostMapping("/{id}/addschoolgroup")
+    public String addSchoolGroup(@ModelAttribute SchoolGroup schoolGroup, @PathVariable Integer id) {
+        schoolGroup.setSchoolUnit( schoolUnitService.findById( id ) );
+        schoolGroupService.save( schoolGroup );
+        return "redirect:/viewschoolunit/" + id;
 
     }
 
     @GetMapping("/group/{id}/students")
     public String viewStudentsInGroup(Model model, @PathVariable Integer id) {
-        model.addAttribute("students", schoolGroupService.findStudentsByGroup(id));
+        model.addAttribute( "students", schoolGroupService.findStudentsByGroup( id ) );
         return "schoolgroup/viewstudents";
     }
 
     @GetMapping("/editschoolgroup/{id}")
     public String editSchoolGroup(Model model, @PathVariable Integer id) {
-        SchoolGroup schoolGroup = schoolGroupService.findById(id);
-        model.addAttribute("schoolgroup", schoolGroup); // initial bind with the form, to say to the webpage what is the type of student th:object
+        SchoolGroup schoolGroup = schoolGroupService.findById( id );
+        model.addAttribute( "schoolgroup", schoolGroup ); // initial bind with the form, to say to the webpage what is the type of student th:object
         return "schoolgroup/editschoolgroup";
     }
 
@@ -64,14 +64,14 @@ public class SchoolGroupController {
 //        database_schoolgroup.setGroupName(schoolGroup.getGroupName()); // update fields
 //        database_schoolgroup.setGroupYear(schoolGroup.getGroupYear());
 //        System.out.println(database_schoolgroup);
-        schoolGroupService.save(schoolGroup); // save it again. SAVE acts as UPDATE
+        schoolGroupService.save( schoolGroup ); // save it again. SAVE acts as UPDATE
 //        return "redirect:/editstudent/"+id;
         return "redirect:/allschoolgroups";
     }
 
     @GetMapping("/deleteschoolgroup/{id}")
     public String deleteSchoolGroup(@PathVariable Integer id) {
-        schoolGroupService.deleteById(id);
+        schoolGroupService.deleteById( id );
         return "redirect:/allschoolgroups"; // forward
     }
 

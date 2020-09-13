@@ -30,7 +30,7 @@
 </div>
 
 <th:block th:each="s: ${schoolgroups}">
-    <div class="row" style="display:inline block">
+    <div class="row" style="display:inline-block">
         <div class="col s12 m4">
             <div class="card">
                 <div class="card-image waves-effect waves-block waves-light">
@@ -43,7 +43,7 @@
             </span>
 
                     <p>
-                        <a th:text="${s.groupName}" th:href="@{/viewschoolunit/{id}(id = ${s.groupId})}"></a>
+                        <a th:text="${s.groupName}" th:href="@{/group/{id}/students(id = ${s.groupId})}"></a>
                     </p>
                 </div>
                 <div class="card-reveal">
