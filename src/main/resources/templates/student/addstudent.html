@@ -47,14 +47,14 @@
                 </div>
             </div>
 
-            <div class="row">
-                <div class="input-field col s12">
-                    <select id="school_group" th:field="*{schoolGroup.groupId}">
-                        <option th:each="sc: ${schoolgroups}" th:value="${sc.groupId}"
-                        th:text="${sc.groupName + ' ' + sc.groupYear}"/>
-                    </select>
-                    <label for="school_group"><b>School group</b></label>
-                </div>
+<!--            <div class="row">-->
+<!--                <div class="input-field col s12">-->
+<!--                    <select id="school_group" th:field="*{schoolGroup.groupId}">-->
+<!--                        <option th:each="sc: ${schoolgroups}" th:value="${sc.groupId}"-->
+<!--                        th:text="${sc.groupName + ' ' + sc.groupYear}"/>-->
+<!--                    </select>-->
+<!--                    <label for="school_group"><b>School group</b></label>-->
+<!--                </div>-->
             </div>
             <button type="submit">Add</button>
         </div>
