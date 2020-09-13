@@ -52,6 +52,8 @@ public class SchoolGroupController {
 
     @GetMapping("/group/{id}/students")
     public String viewStudentsInGroup(Model model, @PathVariable Integer id) {
+        model.addAttribute( "schoolgroup",
+                schoolGroupService.findById( id ));
         model.addAttribute( "student",
                 schoolGroupService.findStudentsByGroup( id ));
         return "schoolgroup/viewstudents";

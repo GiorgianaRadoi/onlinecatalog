@@ -49,7 +49,7 @@ public class StudentController {
 //        //TODO: show in same page on the left all students, on the right add a new student
 //    }
 
-    @GetMapping("/{id}/addstudent")
+    @GetMapping("/{id}/addstudent")//ruta care trebuie sa se regasesca in html
     public String addStudent(Model model, @PathVariable Integer id) {
         Student student = new Student();
         student.setSchoolGroup( schoolGroupService.findById( id ) );
