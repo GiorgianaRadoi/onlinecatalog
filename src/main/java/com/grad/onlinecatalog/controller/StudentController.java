@@ -1,5 +1,6 @@
 package com.grad.onlinecatalog.controller;
 
+import com.grad.onlinecatalog.model.SchoolGroup;
 import com.grad.onlinecatalog.model.Student;
 import com.grad.onlinecatalog.service.SchoolGroupService;
 import com.grad.onlinecatalog.service.StudentService;
@@ -31,21 +32,37 @@ public class StudentController {
         return "student/showallstudents";
     }
 
-    @GetMapping("/addstudent")
-    public String addStudent(Model model) {
-        model.addAttribute("schoolgroups", schoolGroupService.findAll());
-        model.addAttribute("student", new Student()); // initial bind with the form, to say to the webpage
-        // what is the type of student th:object
+//    @GetMapping("/addstudent")
+//    public String addStudent(Model model) {
+//        model.addAttribute("schoolgroups", schoolGroupService.findAll());
+//        model.addAttribute("student", new Student()); // initial bind with the form, to say to the webpage
+//        // what is the type of student th:object
+//
+//        return "student/addstudent";
+//    }
+//
+//    @PostMapping("/addstudent")
+//    public String addStudent(@ModelAttribute Student student) {
+////        System.out.println(student);
+//        studentService.save(student);
+//        return "redirect:/allstudents";
+//        //TODO: show in same page on the left all students, on the right add a new student
+//    }
 
+    @GetMapping("/{id}/addstudent")
+    public String addStudent(Model model, @PathVariable Integer id) {
+        Student student = new Student();
+        student.setSchoolGroup( schoolGroupService.findById( id ) );
+        model.addAttribute( "student", student );
         return "student/addstudent";
     }
 
-    @PostMapping("/addstudent")
-    public String addStudent(@ModelAttribute Student student) {
-//        System.out.println(student);
-        studentService.save(student);
-        return "redirect:/allstudents";
-        //TODO: show in same page on the left all students, on the right add a new student
+    @PostMapping("/{id}/addstudent")
+    public String addStudent(@ModelAttribute Student student, @PathVariable Integer id) {
+        student.setSchoolGroup( schoolGroupService.findById( id ) );
+        studentService.save( student);
+        return "redirect:/viewstudents/" + id;
+
     }
 
     @GetMapping("/editstudent/{id}")
