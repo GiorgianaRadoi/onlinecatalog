@@ -62,8 +62,8 @@ public class SchoolUnitController {
     @GetMapping("/editschoolunit/{id}")
     public String editSchoolUnit(Model model, @PathVariable Integer id) {
         SchoolUnit schoolUnit = schoolUnitService.findById(id);
-        model.addAttribute("schoolunit", schoolUnit); // initial bind with the form, to say to the webpage what is the type of student th:object
-        return "schoolgroup/editschoolunit";
+        model.addAttribute("schoolunit", schoolUnit);
+        return "schoolunit/editschoolunit";
     }
 
     @PostMapping("/editschoolunit/{id}")
