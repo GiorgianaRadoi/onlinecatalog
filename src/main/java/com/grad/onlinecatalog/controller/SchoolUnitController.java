@@ -68,14 +68,14 @@ public class SchoolUnitController {
 
     @PostMapping("/editschoolunit/{id}")
     public String editSchoolUnit(@ModelAttribute SchoolUnit schoolUnit, @PathVariable Integer id) {
-        schoolUnitService.save(schoolUnit); // save it again. SAVE acts as UPDATE
-        return "redirect:/showallschoolunits";
+        schoolUnitService.save(schoolUnit);
+        return "redirect:/allschoolunits";
     }
 
     @GetMapping("/deleteschoolunit/{id}")
     public String deleteSchoolUnit(@PathVariable Integer id) {
         schoolUnitService.deleteById(id);
-        return "redirect:/showallschoolunits"; // forward
+        return "redirect:/allschoolunits"; // forward
     }
 
 }
