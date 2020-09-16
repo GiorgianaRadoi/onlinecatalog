@@ -22,8 +22,8 @@
 <body>
 <div class="container">
     <h1>Students</h1>
-    <a th:href="@{/{id}/addstudent(id=${schoolgroup.groupId})}">
-        <i class="small material-icons">add</i>
+    <a th:href="@{/{id}/addstudent(id=${schoolgroup.groupId})}" class="btn-floating pulse">
+        <i class="material-icons">add</i>
     </a>
     <table>
         <thead>
@@ -47,8 +47,7 @@
             <td th:text="${s.firstName}"></td>
             <td th:text="${s.lastName}"></td>
             <td>
-                <a th:href ="@{/editdtudent{id}(id=${schoolgroup.groupId})}">
-<!--                <a th:href="@{/editstudent/{id}(id = ${s.studentId})}">-->
+                <a th:href="@{/editstudent/{id}(id = ${s.studentId})}">
                     <i class="small material-icons">create</i>
                 </a>
                 <a th:href="@{/deletestudent/{id}(id = ${s.studentId})}">
