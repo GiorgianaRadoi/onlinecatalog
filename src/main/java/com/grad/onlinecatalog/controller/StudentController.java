@@ -81,10 +81,9 @@ public class StudentController {
         System.out.println(student);
         student.setSchoolGroup( schoolGroupService.findById( id ) );
         studentService.save(student); // save it again. SAVE acts as UPDATE
-//        return "redirect:/editstudent/"+id;
 //        return "redirect:/allstudents";
         return "redirect:/group/"+id+"/students";
-        //TODO: show in same page on the left all students, on the right add a new student
+
     }
 
     @GetMapping("/deletestudent/{id}")

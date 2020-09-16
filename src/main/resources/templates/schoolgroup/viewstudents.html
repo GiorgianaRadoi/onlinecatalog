@@ -47,7 +47,8 @@
             <td th:text="${s.firstName}"></td>
             <td th:text="${s.lastName}"></td>
             <td>
-                <a th:href="@{/editstudent/{id}(id = ${s.studentId})}">
+                <a th:href ="@{/editdtudent{id}(id=${schoolgroup.groupId})}">
+<!--                <a th:href="@{/editstudent/{id}(id = ${s.studentId})}">-->
                     <i class="small material-icons">create</i>
                 </a>
                 <a th:href="@{/deletestudent/{id}(id = ${s.studentId})}">
