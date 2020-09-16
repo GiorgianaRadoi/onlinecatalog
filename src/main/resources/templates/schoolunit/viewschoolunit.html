@@ -25,7 +25,7 @@
 <div>
     <h1 th:text="${schoolunit.unitName}"></h1>
     <a th:href="@{/{id}/addschoolgroup(id=${schoolunit.unitId})}" class="btn-floating pulse">
-        <i class="material-icons">add</i>
+        <i class="material-icons right">add</i>
     </a>
 </div>
 
@@ -38,20 +38,22 @@
                          src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60">
                 </div>
                 <div class="card-content">
+                    <p>
+                        <a th:text="${s.groupName}" th:href="@{/group/{id}/students(id = ${s.groupId})}"></a>
+                    </p>
             <span class="card-title activator grey-text text-darken-4" >[[${s.groupName}]]
                 <i class="material-icons right">more_vert</i>
             </span>
 
-                    <p>
-                        <a th:text="${s.groupName}" th:href="@{/group/{id}/students(id = ${s.groupId})}"></a>
-                    </p>
+
                 </div>
                 <div class="card-reveal">
                     <span class="card-title grey-text text-darken-4" >[[${s.groupName}]]
                         <i class="material-icons right">close</i>
                     </span>
+                    <a href="#">This is a link</a>
+                    <a href="#">This is a link</a>
 
-                    <p th:text="${s.groupName}"></p>
                 </div>
 
             </div>
