@@ -64,7 +64,6 @@ public class StudentController {
         student.setSchoolGroup( schoolGroupService.findById( id ) );
         studentService.save( student);
         return "redirect:/group/"+id+"/students";
-
     }
 
     @GetMapping("/editstudent/{id}")
@@ -73,7 +72,6 @@ public class StudentController {
         model.addAttribute("student", student); // initial bind with the form, to say to the webpage
         model.addAttribute("schoolgroups",
                 schoolGroupService.findByUnitId( id ));
-
         return "student/editstudent";
     }
 
