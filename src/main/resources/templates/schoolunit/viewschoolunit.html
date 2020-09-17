@@ -33,19 +33,15 @@
     <div class="row" style="display:inline-block">
         <div class="col s12 m4">
             <div class="card">
-                <div class="card-image waves-effect waves-block waves-light">
+                <div class="card-image ">
                     <img class="activator"
                          src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60">
                     <span class="card-title activator grey-text text-darken-4">[[${s.groupName}]]</span>
                     <a th:href="@{/group/{id}/students(id = ${s.groupId})}" class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
                 </div>
-                <div class="card-content">
-
-                    <p>
-<!--                        <a th:text="${s.groupName}" th:href="@{/group/{id}/students(id = ${s.groupId})}"></a>-->
-                        fnkbjfeboej'b
-                    </p>
-
+                <div class="card-action">
+                    <a href="#">Attendance</a>
+                    <a href="#">Grades</a>
                 </div>
                 <div class="card-reveal">
                     <span class="card-title grey-text text-darken-4">[[${s.groupName}]]
