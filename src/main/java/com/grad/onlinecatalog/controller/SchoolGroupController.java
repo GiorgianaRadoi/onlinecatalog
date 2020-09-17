@@ -51,33 +51,33 @@ public class SchoolGroupController {
     @GetMapping("/group/{id}/students")
     public String viewStudentsInGroup(Model model, @PathVariable Integer id) {
         model.addAttribute( "schoolgroup",
-                schoolGroupService.findById( id ));
+                schoolGroupService.findById( id ) );
         model.addAttribute( "students",//cum se regaseste in html atribut
-               studentService.findByUnitId( id ));
+                studentService.findByUnitId( id ) );
         return "schoolgroup/viewstudents";
     }
 
     @GetMapping("/editschoolgroup/{id}")
     public String editSchoolGroup(Model model, @PathVariable Integer id) {
         SchoolGroup schoolGroup = schoolGroupService.findById( id );
-        model.addAttribute( "schoolgroup", schoolGroup ); // initial bind with the form, to say to the webpage what is the type of student th:object
+        model.addAttribute( "schoolunit",
+                schoolUnitService.findById( id ) );
+        model.addAttribute( "schoolgroup", schoolGroup );
+
         return "schoolgroup/editschoolgroup";
     }
 
     @PostMapping("/editschoolgroup/{id}")
     public String editSchoolGroup(@ModelAttribute SchoolGroup schoolGroup, @PathVariable Integer id) {
-//        SchoolGroup database_schoolgroup = schoolGroupService.findById(id); // ti be able to update that id, get it from database
-//        database_schoolgroup.setGroupName(schoolGroup.getGroupName()); // update fields
-//        database_schoolgroup.setGroupYear(schoolGroup.getGroupYear());
-//        System.out.println(database_schoolgroup);
-        schoolGroupService.save( schoolGroup ); // save it again. SAVE acts as UPDATE
-        return "redirect:/allschoolgroups";
+        schoolUnitService.findById( id );
+        schoolGroupService.save( schoolGroup );
+        return "redirect:/viewschoolunit/" + id;
     }
 
     @GetMapping("/deleteschoolgroup/{id}")
     public String deleteSchoolGroup(@PathVariable Integer id) {
         schoolGroupService.deleteById( id );
-        return "redirect:/allschoolgroups"; // forward
+        return "redirect:/viewschoolunit/" + id; // forward
     }
 
 }

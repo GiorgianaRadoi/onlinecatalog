@@ -71,17 +71,17 @@ public class StudentController {
     public String editStudent(Model model, @PathVariable Integer id) {
         Student student = studentService.findById(id);
         model.addAttribute("student", student); // initial bind with the form, to say to the webpage
-        model.addAttribute("schoolgroups", schoolGroupService.findByUnitId( id ));
-        // what is the type of student th:object
+        model.addAttribute("schoolgroups",
+                schoolGroupService.findByUnitId( id ));
+
         return "student/editstudent";
     }
 
     @PostMapping("/editstudent/{id}")
     public String editStudent(@ModelAttribute Student student, @PathVariable Integer id) {
-        System.out.println(student);
         student.setSchoolGroup( schoolGroupService.findById( id ) );
-        studentService.save(student); // save it again. SAVE acts as UPDATE
-//        return "redirect:/allstudents";
+        studentService.save(student);
+//
         return "redirect:/group/"+id+"/students";
 
     }
@@ -90,6 +90,5 @@ public class StudentController {
     public String deleteStudent(@PathVariable Integer id) {
         studentService.deleteById(id);
         return "redirect:/group/"+id+"/students";
-//        return "redirect:/allstudents"; // forward
     }
 }
