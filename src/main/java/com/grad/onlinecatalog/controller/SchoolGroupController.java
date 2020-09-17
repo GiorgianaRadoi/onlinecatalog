@@ -71,7 +71,6 @@ public class SchoolGroupController {
 //        database_schoolgroup.setGroupYear(schoolGroup.getGroupYear());
 //        System.out.println(database_schoolgroup);
         schoolGroupService.save( schoolGroup ); // save it again. SAVE acts as UPDATE
-//        return "redirect:/editstudent/"+id;
         return "redirect:/allschoolgroups";
     }
 

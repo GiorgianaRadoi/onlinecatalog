@@ -52,7 +52,10 @@
                         <i class="material-icons right">close</i>
                     </span>
                     <p>
-                    <a href="#">This is a link</a>
+                        <a
+                                th:text="Edit Group details" th:href="@{/editchoolgroup/{id}(id = ${s.groupId})}">
+
+                        </a>
                     </p>
                     <p>
                     <a href="#">This is a link</a>
