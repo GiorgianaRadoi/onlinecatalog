@@ -42,8 +42,8 @@
 
     </thead>
 
-    <tbody>
-    <tr th:each="s : ${students}">
+    <tbody th:each="s : ${students}">
+    <tr >
         <td th:text="${s.firstName}" + th:text="${s.lastName}"></td>
         <td> <input type="text" th:field="*{grade}"/></td>
         <td><input type="text" th:field="*{grade}"/></td>
