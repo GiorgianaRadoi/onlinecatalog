@@ -66,25 +66,24 @@ public class StudentController {
         return "redirect:/group/"+id+"/students";
     }
 
-    @GetMapping("/editstudent/{id}")
+    @GetMapping("/{id}/editstudent")
     public String editStudent(Model model, @PathVariable Integer id) {
         Student student = studentService.findById(id);
+        model.addAttribute("schoolgroup",
+                schoolGroupService.findById( id ));
         model.addAttribute("student", student); // initial bind with the form, to say to the webpage
-        model.addAttribute("schoolgroups",
-                schoolGroupService.findByUnitId( id ));
         return "student/editstudent";
     }
 
-    @PostMapping("/editstudent/{id}")
+    @PostMapping("/{id}/editstudent")
     public String editStudent(@ModelAttribute Student student, @PathVariable Integer id) {
         student.setSchoolGroup( schoolGroupService.findById( id ) );
         studentService.save(student);
-//
         return "redirect:/group/"+id+"/students";
 
     }
 
-    @GetMapping("/deletestudent/{id}")
+    @GetMapping("/{id}/deletestudent")
     public String deleteStudent(@PathVariable Integer id) {
         studentService.deleteById(id);
         return "redirect:/group/"+id+"/students";
