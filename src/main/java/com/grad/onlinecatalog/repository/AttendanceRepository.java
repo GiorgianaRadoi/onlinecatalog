@@ -10,5 +10,5 @@ import java.util.List;
 
 public interface AttendanceRepository extends JpaRepository<Attendance, Integer> {
     @Query("FROM Attendance s WHERE s.attendance.attendanceId= :attendanceId")
-    List<Attendance> findAllByStudentId(@Param("studentId")Integer studentId);
+    List<Attendance> findAllByStudentId(@Param("attendanceId")Integer studentId);
 }
