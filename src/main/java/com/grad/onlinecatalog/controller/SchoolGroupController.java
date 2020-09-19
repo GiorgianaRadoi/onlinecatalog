@@ -59,25 +59,24 @@ public class SchoolGroupController {
 
     @GetMapping("/editschoolgroup/{id}")
     public String editSchoolGroup(Model model, @PathVariable Integer id) {
-        SchoolGroup schoolGroup = schoolGroupService.findById( id );
-        model.addAttribute( "schoolunit",
-                schoolUnitService.findById( id ) );
+       SchoolGroup schoolGroup = schoolGroupService.findById( id );
         model.addAttribute( "schoolgroup", schoolGroup );
-
         return "schoolgroup/editschoolgroup";
     }
 
     @PostMapping("/editschoolgroup/{id}")
     public String editSchoolGroup(@ModelAttribute SchoolGroup schoolGroup, @PathVariable Integer id) {
-        schoolUnitService.findById( id );
-        schoolGroupService.save( schoolGroup );
-        return "redirect:/viewschoolunit/" + id;
+       SchoolGroup databaseSchoolGroup = schoolGroupService.findById( id );
+       databaseSchoolGroup.setSchoolUnit( schoolGroup.getSchoolUnit() );
+        schoolGroupService.save( databaseSchoolGroup );
+        return "redirect:/viewschoolunit/" + databaseSchoolGroup.getSchoolUnit().getUnitId();
     }
 
     @GetMapping("/deleteschoolgroup/{id}")
     public String deleteSchoolGroup(@PathVariable Integer id) {
-        schoolGroupService.deleteById( id );
-        return "redirect:/viewschoolunit/" + id; // forward
+       int unitId = schoolGroupService.findById( id ).getSchoolUnit().getUnitId();
+       schoolUnitService.deleteById( id );
+        return "redirect:/viewschoolunit/" + unitId; // forward
     }
 
 }
