@@ -75,7 +75,7 @@ public class SchoolGroupController {
     @GetMapping("/deleteschoolgroup/{id}")
     public String deleteSchoolGroup(@PathVariable Integer id) {
        int unitId = schoolGroupService.findById( id ).getSchoolUnit().getUnitId();
-       schoolUnitService.deleteById( id );
+       schoolGroupService.deleteById( id );
         return "redirect:/viewschoolunit/" + unitId; // forward
     }
 
