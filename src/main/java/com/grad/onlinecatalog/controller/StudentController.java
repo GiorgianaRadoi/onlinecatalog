@@ -62,7 +62,7 @@ public class StudentController {
         databaseStudent.setFirstName( student.getFirstName() );
         databaseStudent.setLastName( student.getLastName() );
         studentService.save(databaseStudent);
-        return "redirect:/group/"+student.getSchoolGroup().getGroupId()+"/students";
+        return "redirect:/group/"+databaseStudent.getSchoolGroup().getGroupId()+"/students";
 
     }
 
