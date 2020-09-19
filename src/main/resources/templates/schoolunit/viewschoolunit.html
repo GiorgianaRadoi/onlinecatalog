@@ -21,7 +21,7 @@
     <nav th:insert="_menu.html::menu_nav">
     </nav>
 </head>
-<body>
+<body class="container">
 <div>
     <h1 th:text="${schoolunit.unitName}"></h1>
     <a th:href="@{/{id}/addschoolgroup(id=${schoolunit.unitId})}" class="btn-floating pulse">
@@ -30,8 +30,8 @@
 </div>
 
 <th:block th:each="s: ${schoolgroups}">
-    <div class="row" style="display:inline-block">
-        <div class="col s4 m4">
+    <div class="row" >
+        <div class="col s12 m6">
             <div class="card hoverable">
                 <div class="card-image ">
                     <img class="activator"
