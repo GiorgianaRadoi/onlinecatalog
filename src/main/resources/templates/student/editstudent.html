@@ -31,7 +31,7 @@
 </head>
 <body>
 <div class="row">
-    <form class="col s12" th:action="@{/{id}/editstudent(id=${schoolgroup.groupId})}" th:object="${student}" method="post">
+    <form class="col s12" th:action="@{/editstudent/{id}(id=${student.studentId})}" th:object="${student}" method="post">
         <div class="container">
             <h1>Edit student</h1>
             <p>Please fill in this form to create a student.</p>
