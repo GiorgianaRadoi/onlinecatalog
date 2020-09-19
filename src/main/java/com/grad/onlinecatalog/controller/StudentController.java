@@ -79,13 +79,14 @@ public class StudentController {
         databaseStudent.setFirstName( student.getFirstName() );
         databaseStudent.setLastName( student.getLastName() );
         studentService.save(databaseStudent);
-        return "redirect:/group/"+id+"/students";
+        return "redirect:/group/"+student.getSchoolGroup().getGroupId()+"/students";
 
     }
 
-    @GetMapping("/{id}/deletestudent")
+    @GetMapping("/deletestudent/{id}")
     public String deleteStudent(@PathVariable Integer id) {
+        int groupId= studentService.findById( id ).getSchoolGroup().getGroupId();
         studentService.deleteById(id);
-        return "redirect:/group/"+id+"/students";
+        return "redirect:/group/"+groupId+"/students";
     }
 }
