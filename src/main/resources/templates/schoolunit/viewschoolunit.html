@@ -54,7 +54,7 @@
                     </p>
                     <p>
                         <a th:href="@{/deleteschoolgroup/{id}(id = ${s.groupId})}">Delete schoolgroup
-                            <i class="small material-icons" onclick="myFunction()">delete</i>
+                            <i class="small material-icons"  onclick="return  confirm('You are sure ?????')">delete</i>
                         </a>
                     </p>
 
@@ -63,11 +63,7 @@
             </div>
         </div>
     </div>
-    <script>
-function myFunction() {
- confirm("Are U sure??????")
-}
-</script>
+
 </th:block>
 
 
