@@ -67,7 +67,7 @@ public class SchoolGroupController {
     @PostMapping("/editschoolgroup/{id}")
     public String editSchoolGroup(@ModelAttribute SchoolGroup schoolGroup, @PathVariable Integer id) {
        SchoolGroup databaseSchoolGroup = schoolGroupService.findById( id );
-       databaseSchoolGroup.setSchoolUnit( schoolGroup.getSchoolUnit() );
+       databaseSchoolGroup.setGroupName( schoolGroup.getGroupName());
         schoolGroupService.save( databaseSchoolGroup );
         return "redirect:/viewschoolunit/" + databaseSchoolGroup.getSchoolUnit().getUnitId();
     }
