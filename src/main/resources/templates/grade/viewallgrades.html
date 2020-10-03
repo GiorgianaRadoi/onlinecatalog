@@ -44,19 +44,18 @@
 
         </thead>
 
-        <tbody th:each="g : ${grade}">
+        <tbody th:each="s : ${grade}">
         <tr>
-            <td th:text="${s.firstName}" + th:text="${s.lastName}"></td>
-
-            <td><input type="text" th:field="*{grade}" th:action="@{/{id}/allgrades(id=${student.studentId})}" th:object="${grade}" method="post"/></td>
-            <td><input type="text" th:field="*{grade}"/></td>
-            <td><input type="text" th:field="*{grade}"/></td>
+            <td ></td>
+            <td><input type="text" th:field="*{grade}" th:action="@{/{id}grade(id=${student.studentId})}" th:object="${grade}" method="post"/></td>
+            <td><input type="text" th:field="*{grade}" th:action="@{/{id}grade(id=${student.studentId})}" th:object="${grade}" method="post"/></td>
+            <td><input type="text" th:field="*{grade}" th:action="@{/{id}grade(id=${student.studentId})}" th:object="${grade}" method="post"/></td>
             <td></td>
-            <td><input type="text" th:field="*{grade}"/></td>
-            <td><input type="text" th:field="*{grade}"/></td>
-            <td><input type="text" th:field="*{grade}"/></td>
+            <td><input type="text" th:field="*{grade}" th:action="@{/{id}grade(id=${student.studentId})}" th:object="${grade}" method="post"/></td>
+            <td><input type="text" th:field="*{grade}" th:action="@{/{id}grade(id=${student.studentId})}" th:object="${grade}" method="post"/></td>
+            <td><input type="text" th:field="*{grade}" th:action="@{/{id}grade(id=${student.studentId})}" th:object="${grade}" method="post"/></td>
             <td></td>
-            <td><input type="text" th:field="*{grade}"/></td>
+            <td><input type="text" th:field="*{grade}" th:action="@{/{id}grade(id=${student.studentId})}" th:object="${grade}" method="post"/></td>
         </tr>
         </tbody>
     </table>
