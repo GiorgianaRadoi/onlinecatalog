@@ -8,6 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
 
@@ -23,6 +26,23 @@ public class GradeController {
     public String showAllGrades(Model model) {
         List<Grade> gradeList = gradeService.findAll();
         model.addAttribute("grade", gradeList);
+        return "grade/viewallgrades";
+    }
+
+    @GetMapping("/{id}/allgrades")//ruta care trebuie sa se regasesca in html
+    public String addGrade(Model model, @PathVariable Integer id) {
+        Grade grade = new Grade();
+        model.addAttribute( "student",
+                studentService.findById( id ));
+        grade.setStudent( studentService.findById( id ) );
+        model.addAttribute( "grade", grade );
+        return "grade/viewallgrades";
+    }
+
+    @PostMapping("/{id}/allgrades")
+    public String addGrade(@ModelAttribute Grade grade, @PathVariable Integer id) {
+        grade.setStudent( studentService.findById( id ) );
+        gradeService.save( grade);
         return "grade/viewallgrades";
     }
 }
