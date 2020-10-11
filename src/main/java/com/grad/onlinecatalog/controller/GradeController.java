@@ -32,9 +32,7 @@ public class GradeController {
     @GetMapping("/{id}/allgrades")//ruta care trebuie sa se regasesca in html
     public String addGrade(Model model, @PathVariable Integer id) {
         Grade grade = new Grade();
-        model.addAttribute( "student",
-                studentService.findById( id ));
-        grade.setStudent( studentService.findById( id ) );
+        studentService.findAll();
         model.addAttribute( "grade", grade );
         return "grade/viewallgrades";
     }
