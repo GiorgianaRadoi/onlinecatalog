@@ -24,24 +24,20 @@ public class GradeController {
 
     @GetMapping("allgrades")
     public String showAllGrades(Model model, @PathVariable Integer id) {
-        Grade grade = new Grade();
-        model.addAttribute( "students",
-                studentService.findByUnitId( id ) );
-        grade.setStudent( studentService.findById( id ) );
-        model.addAttribute( "grade", grade );
-
+        List<Student> studentList = studentService.findByUnitId(id);
+        model.addAttribute("students", studentList);
         return "grade/viewallgrades";
     }
 
-    @GetMapping("/{id}/allgrades")//ruta care trebuie sa se regasesca in html
-    public String addGrade(Model model, @PathVariable Integer id) {
-        Grade grade = new Grade();
-        model.addAttribute( "student",
-                studentService.findByUnitId( id ) );
-        grade.setStudent( studentService.findById( id ) );
-        model.addAttribute( "grade", grade );
-        return "grade/viewallgrades";
-    }
+//    @GetMapping("/{id}/allgrades")//ruta care trebuie sa se regasesca in html
+//    public String addGrade(Model model, @PathVariable Integer id) {
+//        Grade grade = new Grade();
+//        model.addAttribute( "student",
+//                studentService.findByUnitId( id ) );
+//        grade.setStudent( studentService.findById( id ) );
+//        model.addAttribute( "grade", grade );
+//        return "grade/viewallgrades";
+//    }
 
     @PostMapping("/{id}/allgrades")
     public String addGrade(@ModelAttribute Grade grade, @PathVariable Integer id) {
