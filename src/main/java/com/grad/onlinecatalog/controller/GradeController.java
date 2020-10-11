@@ -24,9 +24,11 @@ public class GradeController {
 
     @GetMapping("allgrades")
     public String showAllGrades(Model model, @PathVariable Integer id) {
-
+        Grade grade = new Grade();
         model.addAttribute( "students",
                 studentService.findByUnitId( id ) );
+        grade.setStudent( studentService.findById( id ) );
+        model.addAttribute( "grade", grade );
 
         return "grade/viewallgrades";
     }
@@ -35,7 +37,7 @@ public class GradeController {
     public String addGrade(Model model, @PathVariable Integer id) {
         Grade grade = new Grade();
         model.addAttribute( "student",
-                studentService.findByUnitId( id ));
+                studentService.findByUnitId( id ) );
         grade.setStudent( studentService.findById( id ) );
         model.addAttribute( "grade", grade );
         return "grade/viewallgrades";
@@ -44,7 +46,7 @@ public class GradeController {
     @PostMapping("/{id}/allgrades")
     public String addGrade(@ModelAttribute Grade grade, @PathVariable Integer id) {
         grade.setStudent( studentService.findById( id ) );
-        gradeService.save( grade);
+        gradeService.save( grade );
         return "grade/viewallgrades";
     }
 }
