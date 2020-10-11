@@ -46,8 +46,7 @@
 
         <tbody>
         <tr th:each="s:${students}">
-<!--            Cum imi aduc eu aici lista de students  din schoolgroup-ul respectiv cu nume si prenume daca nu pot face th each pe students-->
-           <td th:text="${s.firstName}+${s.lastName}"></td>
+
             <td th:each="g:s.grade">
                 <div><input type="text" th:field="*{grade}" id="grade1" placeholder="Grade" />
                     <input type="date" th:field="*{gradeDate}" id="date1" pattern="yyyy-MM-dd"/></div>
