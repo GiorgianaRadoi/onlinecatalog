@@ -44,11 +44,11 @@
 
         </thead>
 
-        <tbody th:each="s : ${grade}">
-        <tr>
+        <tbody>
+        <tr th:each="s:${student}">
 <!--            Cum imi aduc eu aici lista de students  din schoolgroup-ul respectiv cu nume si prenume daca nu pot face th each pe students-->
             <td ></td>
-            <td>
+            <td th:each="g:s.grade">
                 <div><input type="text" th:field="*{grade}" id="grade1" placeholder="Grade" />
                 <input type="date" th:field="*{gradeDate}" id="date1" pattern="yyyy-MM-dd"/></div>
 <!--                Nota si data din input sa fie salvate prin apasarea butonului de check si cum aduc grade pe acelasi rand cu date picker-->
@@ -56,32 +56,32 @@
                 <i class="small material-icons align right">create</i>
                 <i class="small material-icons align right">close</i>
                </div></td>
-            <td><div><input type="text" th:field="*{grade}" id="grade2" placeholder="Grade" />
+            <td th:each="g:s.grade"><div><input type="text" th:field="*{grade}" id="grade2" placeholder="Grade" />
                 <input type="date" th:field="*{gradeDate}" id="date2" pattern="yyyy-MM-dd"/></div>
                 <div > <i class="small material-icons align right" th:action="@{/{id}grade(id=${student.studentId})}" th:object="${grade}" method="post">check</i>
                     <i class="small material-icons align right">create</i>
                     <i class="small material-icons align right">close</i>
                 </div></td>
-            <td><div><input type="text" th:field="*{grade}" id="grade3" placeholder="Grade" />
+            <td th:each="g:s.grade"><div><input type="text" th:field="*{grade}" id="grade3" placeholder="Grade" />
                 <input type="date" th:field="*{gradeDate}" id="date3" pattern="yyyy-MM-dd"/></div>
                 <div > <i class="small material-icons align right" th:action="@{/{id}grade(id=${student.studentId})}" th:object="${grade}" method="post">check</i>
                     <i class="small material-icons align right">create</i>
                     <i class="small material-icons align right">close</i>
                 </div></td>
             <td></td>
-            <td><div><input type="text" th:field="*{grade}" id="grade4" placeholder="Grade" />
+            <td th:each="g:s.grade"><div><input type="text" th:field="*{grade}" id="grade4" placeholder="Grade" />
                 <input type="date" th:field="*{gradeDate}" id="date4" pattern="yyyy-MM-dd"/></div>
                 <div > <i class="small material-icons align right" th:action="@{/{id}grade(id=${student.studentId})}" th:object="${grade}" method="post">check</i>
                     <i class="small material-icons align right">create</i>
                     <i class="small material-icons align right">close</i>
                 </div></td>
-            <td><div><input type="text" th:field="*{grade}" id="grade5" placeholder="Grade" />
+            <td th:each="g:s.grade"><div><input type="text" th:field="*{grade}" id="grade5" placeholder="Grade" />
                 <input type="date" th:field="*{gradeDate}" id="date5" pattern="yyyy-MM-dd"/></div>
                 <div > <i class="small material-icons align right" th:action="@{/{id}grade(id=${student.studentId})}" th:object="${grade}" method="post">check</i>
                     <i class="small material-icons align right">create</i>
                     <i class="small material-icons align right">close</i>
                 </div></td>
-            <td><div><input type="text" th:field="*{grade}" id="grade6" placeholder="Grade" />
+            <td th:each="g:s.grade"><div><input type="text" th:field="*{grade}" id="grade6" placeholder="Grade" />
                 <input type="date" th:field="*{gradeDate}" id="date6" pattern="yyyy-MM-dd"/></div>
                 <div > <i class="small material-icons align right" th:action="@{/{id}grade(id=${student.studentId})}" th:object="${grade}" method="post">check</i>
                     <i class="small material-icons align right">create</i>
