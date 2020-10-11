@@ -24,9 +24,8 @@ public class GradeController {
 
     @GetMapping("allgrades")
     public String showAllGrades(Model model, @PathVariable Integer id) {
-        Grade grade = new Grade();
-        model.addAttribute( "students",
-                studentService.findByUnitId( id ) );
+        List<Student> studentList= studentService.findByUnitId( id ) ;
+        model.addAttribute("students", studentList);
         return "grade/viewallgrades";
     }
 
