@@ -18,9 +18,9 @@ public class Attendance {
     private int attendanceId;
 
     private String attendance;
-//    private Date attendanceDate;
+    private Date attendanceDate;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    private  Student student;
+    private Student student;
 
 }
